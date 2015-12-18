@@ -17,7 +17,6 @@ bool CardSprite::init() {
     if (!Sprite::init()) {
         return false;
     }
-
     return true;
 }
 
@@ -33,14 +32,14 @@ void CardSprite::enemyInit(int numbers, int width, int height, float CardSpriteX
     if (numbers > 0)
     {
         //Join middle Fonts
-        labelCardNumber = LabelTTF::create(String::createWithFormat("%i", numbers)->getCString(), "HiraKakuProN-W6", FONT_SIZE);
+        labelCardNumber = LabelTTF::create(String::createWithFormat("%i", numbers)->getCString(), "Helvetica", FONT_SIZE);
         labelCardNumber->setPosition(layerColorBG->getContentSize().width/2, layerColorBG->getContentSize().height/2);
-        labelCardNumber->setTag(8);
+        //labelCardNumber->setTag(8);
         layerColorBG->addChild(labelCardNumber);
     } else {
-        labelCardNumber = LabelTTF::create("", "HiraKakuProN-W6", FONT_SIZE);
+        labelCardNumber = LabelTTF::create("", "Helvetica", FONT_SIZE);
         labelCardNumber->setPosition(layerColorBG->getContentSize().width/2, layerColorBG->getContentSize().height/2);
-        labelCardNumber->setTag(8);
+        //labelCardNumber->setTag(8);
         layerColorBG->addChild(labelCardNumber);
     }
 

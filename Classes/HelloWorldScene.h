@@ -4,6 +4,11 @@
 #include "cocos2d.h"
 #include "CardSprite.h"
 
+#define SIZE_FIELD_X  4
+#define SIZE_FIELD_Y  4
+
+
+
 class HelloWorld : public cocos2d::Layer
 {
 public:
@@ -31,7 +36,7 @@ public:
     bool doRight();
 
     void autoCreateCardNumber();
-    void createCardSprite(cocos2d::Size size);
+    void createCardSprite(cocos2d::Size size, cocos2d::LabelTTF *labelTTFCardNumberName);
     void doCheckGameOver();
 
     //Game scores
@@ -41,7 +46,11 @@ public:
     cocos2d::LabelTTF* labelTTFCardNumber;
 
 private:
-    int firstX, firstY, endX, endY;
+	int first_x,
+		first_y,
+		delta_x,
+		delta_y;
+		
     CardSprite *cards[4][4];
 };
 

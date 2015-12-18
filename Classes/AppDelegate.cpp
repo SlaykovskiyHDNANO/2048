@@ -19,6 +19,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
         glview = GLViewImpl::create("2048");
         director->setOpenGLView(glview);
     }
+	
+
 
     // turn on display FPS
     director->setDisplayStats(true);
