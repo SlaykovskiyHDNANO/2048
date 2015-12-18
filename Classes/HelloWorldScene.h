@@ -7,6 +7,13 @@
 static const int SIZE_FIELD_X = 4;
 static const int SIZE_FIELD_Y = 4;
 
+enum SceneStatus {
+	SS_WAITING_YOU_DIED_CHANGE,
+	SS_PLAYING,
+
+
+};
+
 
 
 class HelloWorld : public cocos2d::Layer
@@ -57,6 +64,8 @@ private:
 		delta_x,
 		delta_y;
 		
+	SceneStatus status_;
+
     CardSprite *cards[4][4];
 
 	cocos2d::Director *_director;

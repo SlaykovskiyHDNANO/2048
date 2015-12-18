@@ -354,6 +354,7 @@ bool HelloWorld::doCheckGameOver(){
 		_eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 		*/
 		keyboardListener->onKeyReleased = [this](EventKeyboard::KeyCode keyCode, Event* event){
+			
 			Director::getInstance()->replaceScene(TransitionFade::create(1, HelloWorld::createScene()));
 
 		};
@@ -362,7 +363,6 @@ bool HelloWorld::doCheckGameOver(){
 		
 
         log("you die");
-		Director::getInstance()->replaceScene(TransitionFade::create(1, GameOver::createScene()));
     } else {
 		return true;
 		//autoCreateCardNumber();
@@ -374,39 +374,30 @@ bool HelloWorld::doCheckGameOver(){
 
 
 void HelloWorld::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event){
-	bool moveDid = true;
+	bool didMove = true;
 	switch (keyCode){
 	case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
 	case EventKeyboard::KeyCode::KEY_A:
-		if (!doLeft()) {
-			doCheckGameOver();
-			return;
-		}
+		didMove = doLeft();
 		break;
 	case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
 	case EventKeyboard::KeyCode::KEY_D:
-		if (!doRight()) {
-			doCheckGameOver();
-			return;
-		}
+		didMove = doRight();
 		break;
 	case EventKeyboard::KeyCode::KEY_UP_ARROW:
 	case EventKeyboard::KeyCode::KEY_W:
-		if (!doUp()) {
-			doCheckGameOver();
-			return;
-		}
+		didMove = doUp();
 		break;
 	case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
 	case EventKeyboard::KeyCode::KEY_S:
-		if (!doDown()) {
-			doCheckGameOver();
-			return;
-		}
+		didMove = doDown();
 		break;
 	}
-	if (doCheckGameOver())
+
+	if (didMove) 
 		autoCreateCardNumber();
+
+	doCheckGameOver();
 };
 
 void HelloWorld::Close(Ref* pSender)
