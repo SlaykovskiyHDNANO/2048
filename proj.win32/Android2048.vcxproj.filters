@@ -57,6 +57,9 @@
     <ClInclude Include="..\Classes\GameOverScene.h">
       <Filter>src\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\GUIUtils.h">
+      <Filter>src\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

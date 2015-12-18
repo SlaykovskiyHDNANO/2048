@@ -1,4 +1,3 @@
-Aug '14
 #xcode specific
 build/*
 *.pbxuser
@@ -161,6 +160,8 @@ artifacts/
 *.vspscc
 *.vssscc
 .builds
+*.tlog
+*.idb
 *.pidb
 *.svclog
 *.scc

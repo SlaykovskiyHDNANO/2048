@@ -337,6 +337,7 @@ bool HelloWorld::doCheckGameOver(){
 	UserDefault::getInstance()->setIntegerForKey("score", score);
 
 	if (!gameContinue) {
+
 		auto label = Label::createWithTTF("YOU DIED", "fonts/Marker Felt.ttf", 96);
 		label->setColor(cocos2d::Color3B::RED);
 		auto visibleSize = _director->getVisibleSize();
@@ -348,14 +349,19 @@ bool HelloWorld::doCheckGameOver(){
 		//Создаем слушатель события - нажата любая кнопка
 		auto keyboardListener = EventListenerKeyboard::create();
 		auto touchListener = EventListenerTouchOneByOne::create();
-		/*touchListener->onTouchEnded = [this](Touch *touch, Event *unused_event){
+
+		/////////////////
+		touchListener->onTouchBegan = [this](Touch *touch, Event *unused_event){
 		Director::getInstance()->replaceScene(TransitionFade::create(1, HelloWorld::createScene()));
+		return true;
 		};
 		_eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
-		*/
+		/////////////////
+
+
 		keyboardListener->onKeyReleased = [this](EventKeyboard::KeyCode keyCode, Event* event){
 			
-			Director::getInstance()->replaceScene(TransitionFade::create(1, HelloWorld::createScene()));
+			Director::getInstance()->replaceScene(TransitionFade::create(1, GameOver::createScene()));
 
 		};
 		_eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardListener, this);

@@ -31,7 +31,7 @@ bool GameOver::init()
 	auto layerColorBG = cocos2d::LayerColor::create(cocos2d::Color4B(180,170,160,255));
 	this->addChild(layerColorBG);
 	auto label = Label::createWithTTF("Game Over", "fonts/Marker Felt.ttf", 96);
-	label->enableOutline(Color4B(255, 0, 0, 100),6);
+	//label->enableOutline(Color4B(255, 0, 0, 100),6);
 	label->enableGlow(Color4B(255, 0, 0, 255));
 	label->enableShadow();
     label->setPosition(origin.x + visibleSize.width/2, origin.y + visibleSize.height /2);
