@@ -19,9 +19,6 @@
     <Filter Include="src\Headers\Network">
       <UniqueIdentifier>{b54ac890-2515-4027-a618-d59031af4858}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Headers\NewFilter1">
-      <UniqueIdentifier>{00b79449-710a-445e-8a1e-7354457a40c4}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
