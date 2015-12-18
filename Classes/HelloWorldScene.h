@@ -4,8 +4,8 @@
 #include "cocos2d.h"
 #include "CardSprite.h"
 
-#define SIZE_FIELD_X  4
-#define SIZE_FIELD_Y  4
+static const int SIZE_FIELD_X = 4;
+static const int SIZE_FIELD_Y = 4;
 
 
 

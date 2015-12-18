@@ -276,7 +276,7 @@ void HelloWorld::autoCreateCardNumber()
 				vacant_places.push_back(std::make_pair(i, j));
 
 	if (vacant_places.size() == 0)
-		throw std::runtime_error("No vacant places found");
+		return;
     int index_random_place = CCRANDOM_0_1()*(vacant_places.size()-1);
 	auto pair = vacant_places[index_random_place]; //чтобы меньше писать
 
@@ -287,17 +287,25 @@ void HelloWorld::autoCreateCardNumber()
 
 //Determine whether the game can continue
 void HelloWorld::doCheckGameOver(){
-    bool isGameOver = false;
+    bool isGameOver = true;
 
     for (int y = 0; y < SIZE_FIELD_X; y++) {
         for (int x = 0; x < SIZE_FIELD_Y; x++) {
-			         
+			//if (cards[x][y]->getNumber() == 0 || )
+			if (cards[x][y]->getNumber() == 0 ||
+				(x>0 && (cards[x][y]->getNumber() == cards[x - 1][y]->getNumber())) ||
+				(x<3 && (cards[x][y]->getNumber() == cards[x + 1][y]->getNumber())) ||
+				(y>0 && (cards[x][y]->getNumber() == cards[x][y - 1]->getNumber())) ||
+				(y<3 && (cards[x][y]->getNumber() == cards[x][y + 1]->getNumber()))) {
+				isGameOver = false;
+				break;
+			}
         }
     }
 
     if (isGameOver) {
-        //游戏结束，重新开始游戏
-        log("游戏结束");
+        
+        log("you die");
         Director::getInstance()->replaceScene(TransitionFade::create(1, HelloWorld::createScene()));
     } else {
         autoCreateCardNumber();
