@@ -45,6 +45,10 @@ public:
     //Defines the display control scores счетчик
     cocos2d::LabelTTF* labelTTFCardNumber;
 
+	//void pauseCallback(cocos2d::Ref* pSender);
+	void Close(Ref* pSender);
+	void Again(Ref* pSender);
+
 private:
 	int first_x,
 		first_y,
@@ -52,6 +56,9 @@ private:
 		delta_y;
 		
     CardSprite *cards[4][4];
+
+	cocos2d::Director *_director;
+	cocos2d::Size _visibleSize;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

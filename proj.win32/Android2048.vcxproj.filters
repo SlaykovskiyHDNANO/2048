@@ -10,19 +10,35 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Headers">
+      <UniqueIdentifier>{3b8f4716-6a23-4e02-8545-bf4cb2afdd25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Sources">
+      <UniqueIdentifier>{7f1b1b88-f514-42db-9912-aeedb08b882e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Headers\Network">
+      <UniqueIdentifier>{b54ac890-2515-4027-a618-d59031af4858}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Headers\NewFilter1">
+      <UniqueIdentifier>{00b79449-710a-445e-8a1e-7354457a40c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>win32</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\CardSprite.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>src\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StatisticsClient.cpp" />
+    <ClCompile Include="..\Classes\GameOverScene.cpp">
+      <Filter>src\Headers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -30,13 +46,19 @@
       <Filter>win32</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\AppDelegate.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>src</Filter>
+      <Filter>src\Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\CardSprite.h">
-      <Filter>src</Filter>
+      <Filter>src\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>src\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StatisticsClient.h">
+      <Filter>src\Headers\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameOverScene.h">
+      <Filter>src\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

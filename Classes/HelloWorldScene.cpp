@@ -1,5 +1,7 @@
 #include "HelloWorldScene.h"
 #include "CardSprite.h"
+//#include "PauseScene.h"
+#include "GameOverScene.h"
 
 USING_NS_CC;
 
@@ -63,6 +65,32 @@ bool HelloWorld::init() {
     labelTTFCardNumber = LabelTTF::create("0","Helvetica",60);
 	labelTTFCardNumber->setPosition(Point(labelTTFCardNumberName->getPosition().x + labelTTFCardNumberName->getFontSize() * (labelTTFCardNumberName->getString().length() % 2 + labelTTFCardNumberName->getString().length() / 2 + 1), visibleSize.height - 40));
     addChild(labelTTFCardNumber);
+	_director = Director::getInstance();
+	_visibleSize = _director->getVisibleSize();
+	auto origin = _director->getVisibleOrigin();
+	auto closeItem = MenuItemImage::create(
+		"quit.png",
+		"quit.png",
+		CC_CALLBACK_1(HelloWorld::Close, this));
+
+	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width / 2,
+		origin.y + closeItem->getContentSize().height / 2));
+
+	auto menu = Menu::create(closeItem, nullptr);
+	menu->setPosition(Vec2::ZERO);
+	this->addChild(menu, 1);
+
+	auto againItem = MenuItemImage::create(
+		"again.png",
+		"again.png",
+		CC_CALLBACK_1(HelloWorld::Again, this));
+
+	againItem->setPosition(Vec2(origin.x + visibleSize.width - againItem->getContentSize().width / 2,
+		origin.y + visibleSize.height - againItem->getContentSize().height / 2));
+
+	auto menu2 = Menu::create(againItem, nullptr);
+	menu2->setPosition(Vec2::ZERO);
+	this->addChild(menu2, 1);
 
     return true;
 
@@ -302,11 +330,12 @@ void HelloWorld::doCheckGameOver(){
 			}
         }
     }
-
+	UserDefault::getInstance()->setIntegerForKey("score", score);
     if (isGameOver) {
-        
+		
+
         log("you die");
-        Director::getInstance()->replaceScene(TransitionFade::create(1, HelloWorld::createScene()));
+		Director::getInstance()->replaceScene(TransitionFade::create(1, GameOver::createScene()));
     } else {
         autoCreateCardNumber();
     }
@@ -345,3 +374,13 @@ void HelloWorld::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event){
 	}
 	doCheckGameOver();
 };
+
+void HelloWorld::Close(Ref* pSender)
+{
+	Director::getInstance()->end();
+}
+
+void HelloWorld::Again(Ref* pSender)
+{
+	Director::getInstance()->replaceScene(TransitionFade::create(1, HelloWorld::createScene()));
+}
