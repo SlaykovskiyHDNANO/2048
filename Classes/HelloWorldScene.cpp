@@ -3,6 +3,8 @@
 //#include "PauseScene.h"
 #include "GameOverScene.h"
 
+
+
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -42,6 +44,7 @@ bool HelloWorld::init() {
     touchListener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener,this);
 
+	
     //Join the game's background color
     auto layerColorBG = cocos2d::LayerColor::create(cocos2d::Color4B(180,170,160,255));
     this->addChild(layerColorBG);
