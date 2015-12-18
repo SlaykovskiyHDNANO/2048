@@ -35,9 +35,11 @@ public:
     bool doLeft();
     bool doRight();
 
+	bool doCheckGameOver();
+
     void autoCreateCardNumber();
     void createCardSprite(cocos2d::Size size, cocos2d::LabelTTF *labelTTFCardNumberName);
-    void doCheckGameOver();
+    
 
     //Game scores
 	int score = { 0 };
