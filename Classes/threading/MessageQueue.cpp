@@ -2,7 +2,7 @@
 #ifdef _WIN32
 #include <Windows.h>
 #else
-#include <ptrhead.h>
+#include <pthread.h>
 #endif
 
 
@@ -12,7 +12,8 @@ namespace utils {
 #ifdef _WIN32
 			return (bool)TerminateThread(handle, 1);
 #else
-			return (bool)!pthread_cancel(handle);
+			//return !pthread_cancel(handle)
+			return false;
 #endif
 
 		}

@@ -79,7 +79,7 @@ protected:
 	}
 
 	void onError(cocos2d::network::SIOClient* cli, const std::string& data) override {
-		cocos2d::log(("[ERROR] StatisticsClient::"+data).c_str());
+		cocos2d::log("%s%s", "[ERROR] StatisticsClient::",data.c_str());
 		status_ = ConnectionStatus::CS_FAILED;
 
 

@@ -67,7 +67,7 @@ namespace threading {
 		T first() {
 			//lock thread
 			this->vals->lock.lock();
-			if (this->hasnew) {
+			if (this->has_new()) {
 				//return first element
 				T res = this->vals->queue.front();
 				this->vals->lock.unlock();
@@ -146,8 +146,8 @@ namespace threading {
 			std::mutex lock;
 			std::unique_lock<std::mutex> ll(this->vals->conlock);
 
-			std::_Cv_status timeout = std::_Cv_status::no_timeout;
-			while (!this->vals->notified && timeout == std::_Cv_status::no_timeout)
+			std::cv_status timeout = std::cv_status::no_timeout;
+			while (!this->vals->notified && timeout == std::cv_status::no_timeout)
 					timeout = this->vals->event.wait_for(ll, std::chrono::milliseconds(msec));
 			this->vals->lock.lock();
 			auto ret = this->vals->notified;
